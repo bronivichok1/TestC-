@@ -1,0 +1,6 @@
+﻿  TestC++.cpp
+C:\Users\Acer\source\repos\TestC++\TestC++.cpp(78,21): warning C4584: knife: базовый класс "Weapon" уже является базовым классом для "gun"
+C:\Users\Acer\source\repos\TestC++\TestC++.cpp(11): message : см. объявление "Weapon"
+C:\Users\Acer\source\repos\TestC++\TestC++.cpp(20): message : см. объявление "gun"
+C:\Users\Acer\source\repos\TestC++\TestC++.cpp(164,15): warning C4129:: неизвестная escape-последовательность
+  TestC++.vcxproj -> C:\Users\Acer\source\repos\TestC++\Debug\TestC++.exe

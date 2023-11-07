@@ -2,6 +2,9 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <string>
+
 
 using namespace std;
 
@@ -9,10 +12,7 @@ class Weapon
 {
 
 public:
-    Weapon()
-    {
-        cout << "job" << endl;
-    }
+    Weapon() {};
     virtual ~Weapon() = 0;
     virtual void shoot() = 0;
 };
@@ -50,7 +50,10 @@ public:
         cout << "Bang" << endl;
     }
 
-    void shoting();
+    void shoting()
+    {
+        cout << "Bad" << endl;
+    }
 
 };
 class speedgun : public gun
@@ -94,10 +97,7 @@ void foo()
 {
     cout << "nice" << endl;
 }
-void gun::shoting()
-{
-    cout << "Bad" << endl;
-}
+
 class people
 {
 public:
@@ -105,6 +105,35 @@ public:
     {
         weapon->shoot();
     }
+};
+class IBicycle //"интерфейс в с++"
+{
+public:
+    void virtual Ride() = 0;
+    void virtual TheCorner()=0;
+};
+class Bicycle :public IBicycle
+{
+    void Ride() override
+    {
+        cout << "JobRide" << endl;
+    }
+    void TheCorner() override
+    {
+        cout<<"JobCorner"<<endl;
+    }
+};
+class Human
+{
+public:
+    void RideOn(IBicycle &bicycle)
+    {
+        bicycle.Ride();
+        cout<<"Go"<<endl;
+        bicycle.TheCorner();
+        cout<<"Left"<<endl;
+    }
+
 };
 int main()
 {
@@ -115,8 +144,50 @@ int main()
     knife knife1;
     people people1;
     people1.shoot(&knife1);
-    knife1.shoting;
+    knife knife2;
+    ((gun)knife2).shoot();
+    
+    Bicycle bicycle1;
+    Human Human1;
+    Human1.RideOn(bicycle1);
 
+    string path = "Test.txt";
+    ofstream foud;
+    foud.open(path,ofstream::app);
+    
+    if (!foud.is_open())
+    {
+        cout << "error" << endl;
+    }
+    else 
+    {
+        foud<<"\ new data";
+    }
+    foud.close();
+
+    ifstream fin;
+    fin.open(path);
+
+    if (!fin.is_open())
+    {
+        cout << "error" << endl;
+    }
+    else
+    {
+        string str;
+        /*char ch;
+        while (fin.get(ch))
+        {
+            cout << ch << endl;
+        }*/
+        while (!fin.eof())
+        {
+            str = "";
+            getline(fin, str);
+            cout << str << endl;
+        }
+    }
+    fin.close();
     return 0;
 }
 
